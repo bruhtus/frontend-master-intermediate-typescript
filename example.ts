@@ -53,7 +53,8 @@ type MyFruitGenericVerbose<Fruit, Keys extends keyof Fruit> = {
   [Parameters in Keys]?: Fruit[Keys];
 };
 
-type Fruits<Property extends FruitProperty> = {
+// the default generic type is FruitProperty.
+interface Fruits<Property extends Partial<FruitProperty> = FruitProperty> {
   apple: Property;
   cherry: Property;
   banana: Property;
@@ -61,10 +62,10 @@ type Fruits<Property extends FruitProperty> = {
 
 function fruitCatalogGenericVerbose(
   fruit?: MyFruitGenericVerbose<
-    Fruits<FruitProperty>,
-    keyof Fruits<FruitProperty>
+    Fruits<{ name: string }>,
+    keyof Fruits<{ name: string }>
   >
-): Partial<Fruits<FruitProperty>> | '' {
+): Partial<Fruits<{ name: string }>> | '' {
   if (fruit) {
     return fruit;
   }
