@@ -58,6 +58,12 @@ export { Fruit }
 
 which result in three `Fruit` stacked into each other.
 
+> If one of them, either the class, namespace, or interface of Fruit is
+> exported, we need to export the rest of the Fruit.
+>
+> The order is important, the namespace must come after the class or the
+> function.
+
 ### What is Namespace?
 
 An important aspect of typescript is, it needs to be able to describe existing
